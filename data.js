@@ -1,4 +1,4 @@
-var JSON_URL = 'https://rawgit.com/bobby1030/6561d1fe087a0b4fb21b/raw/786ab26cb7aead2b0d2421b9a631935a92aee05b/FinanceKnowledge.json'
+var JSON_URL = 'data.json'
 var correct = 0,
     wrong = 0
 
