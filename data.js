@@ -18,10 +18,18 @@ var data = $.getJSON(JSON_URL, function(data) {
     // End Anti-Repeat Script
 
     $('.spinner').fadeOut()
+
     init()
+    showQuizCount()
 
     function randomNum(max) {
         return Math.floor(Math.random() * max);
+    }
+
+    function showQuizCount() {
+        var QuizCount = data.quiz.length
+        var QuizPercent =
+        $('#QuizCount').html('目前題庫數量 / 官方題庫數量：' + QuizCount+' / 100')
     }
 
     function checkAns() {
