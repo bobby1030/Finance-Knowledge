@@ -1,3 +1,19 @@
+@import url(http://fonts.googleapis.com/earlyaccess/cwtexhei.css);
+
+body {
+  font-family: 'cwTeXHei' !important
+}
+
+#testing-area a {
+  margin: 20px;
+  font-size: 25px;
+  display:block;
+}
+
+#testing-area h2 {
+  line-height:130%;
+}
+
 .spinner {
   margin: 100px auto;
   width: 50px;
@@ -53,12 +69,3 @@
   }
 }
 
-#testing-area a {
-  margin: 20px;
-  font-size: 25px;
-  display:block;
-}
-
-#testing-area h2 {
-  line-height:130%;
-}

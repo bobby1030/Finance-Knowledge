@@ -1,6 +1,7 @@
 var JSON_URL = 'data.json'
 var correct = 0,
-    wrong = 0
+    wrong = 0,
+    lastOptionList = []
 
 
 
@@ -29,7 +30,7 @@ var data = $.getJSON(JSON_URL, function(data) {
     function showQuizCount() {
         var QuizCount = data.quiz.length
         var QuizPercent =
-        $('#QuizCount').html('目前題庫數量 / 官方題庫數量：' + QuizCount+' / 100')
+            $('#QuizCount').html('目前題庫數量 / 官方題庫數量：' + QuizCount + ' / 100')
     }
 
     function checkAns() {
@@ -44,12 +45,17 @@ var data = $.getJSON(JSON_URL, function(data) {
     }
 
     function scoreBoard(score) {
+        
         if (score == 'correct') {
             correct++
+            $('#status').html('<span class="label label-success">正確</span>&nbsp;&nbsp;')
         } else if (score == 'wrong') {
             wrong++
+            $('#status').html('<span class="label label-danger">錯誤</span>&nbsp;&nbsp;')
         }
-        $('#scoreBoard').html('<h3><span class="label label-default">成績</span>&nbsp;&nbsp;&nbsp;正確：' + correct + ' / 錯誤：' + wrong + ' / 總題數：' + (correct + wrong))
+        $('#status').append('<span class="label label-default">上題解答</span>&nbsp;&nbsp;&nbsp;' + lastOptionList[correctAns])
+        $('#total').html('<span class="label label-default">成績</span>&nbsp;&nbsp;&nbsp;正確：' + correct + ' / 錯誤：' + wrong + ' / 總題數：' + (correct + wrong))
+
     }
 
     function init() {
@@ -60,7 +66,9 @@ var data = $.getJSON(JSON_URL, function(data) {
             for (var i = 0; i < 4; i++) {
                 $('#testing-area').append('<a option="' + i + '" id="option' + i + '">' + data.quiz[quizIndex].option[i] + '</a>');
             };
-        }else{
+            lastOptionList = data.quiz[quizIndex].option
+
+        } else {
             $('#testing-area').append('<h2>所有題目皆已作答</h2>');
         }
 
